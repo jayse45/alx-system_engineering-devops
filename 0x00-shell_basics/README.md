@@ -1,0 +1,1 @@
+Scripts of all basic shell
