@@ -1,0 +1,1 @@
+Project repository for all shell basics project.
