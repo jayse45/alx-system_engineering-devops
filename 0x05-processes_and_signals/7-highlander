@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#script displaying infinity statement with a sleep 2 in between and displays I'm invincible!!! when SIGTERM is called
+
+trap "echo 'I am invincible!!!'" SIGTERM
+while true
+do
+echo "To infinity and beyond"
+sleep 2
+done
