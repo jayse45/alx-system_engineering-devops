@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#display statement inifite times
+
+while true
+do
+echo "To infinity and beyond"
+sleep 2
+done
