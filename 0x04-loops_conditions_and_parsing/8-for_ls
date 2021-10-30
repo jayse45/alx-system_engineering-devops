@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# displays files
+# create a script that lists content of current dir
+# in a list format
+for file in *
+do
+    echo "$file" | cut -f 2- -d '-'
+done
