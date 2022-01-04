@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# a Bash script that creates a RSA key pair with the requirements
+
+ssh-keygen -f school -b 4096 -N passphrasetobechanged
