@@ -38,9 +38,9 @@ defaults
 
 listen http-in
 	bind *:80
-	bind *:443 ssl crt /etc/letsencrypt/live/www.cristhiancarbonell.tech/fullchain.pem
+	bind *:443 ssl crt /etc/letsencrypt/live/www.nanagyasi.tech/fullchain.pem
 	http-request redirect scheme https unless { ssl_fc }
 	mode http
 	balance roundrobin
-	server 1854-web-01 35.237.65.20:80
-	server 1854-web-02 35.175.191.14:80
+	server 537-web-01 35.237.65.20:80
+	server 537-web-02 35.175.191.14:80
