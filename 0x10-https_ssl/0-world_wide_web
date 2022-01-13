@@ -1,15 +1,27 @@
 #!/usr/bin/env bash
-# Bash script that will display information about subdomains
-domain=$1
-array=( "www" "lb-01" "web-01" "web-02" )
-
-if [ $# -eq 2 ] ; then
-    subdomain=$2
-    echo -n "The subdomain $2"
-    dig $2.$1 | grep -A1 'ANSWER SECTION:' | tail -n 1 | awk '{print " is a " $4 " record and points to " $5}'
-else
-    for i in "${array[@]}" ; do
-    echo -n "The subdomain $i"
-    dig $i.$1 | grep -A1 'ANSWER SECTION:' | tail -n 1 | awk '{print " is a "$4 " record and points to " $5}'
-    done
+# Configure your domain zone so that the subdomain www points to your load-balancer IP (lb-01)
+if [ "$#" == 1 ]
+then
+    printf "The subdomain www is a "
+    dig +nocmd www."$1" +noall +answer | awk '{printf $4}'
+    printf " record and points to "
+    dig www."$1" +short
+    printf "The subdomain lb-01 is a "
+    dig +nocmd lb-01."$1" +noall +answer | awk '{printf $4}'
+    printf " record and points to "
+    dig lb-01."$1" +short
+    printf "The subdomain web-01 is a "
+    dig +nocmd web-01."$1" +noall +answer | awk '{printf $4}'
+    printf " record and points to "
+    dig web-01."$1" +short
+    printf "The subdomain web-02 is a "
+    dig +nocmd web-02."$1" +noall +answer | awk '{printf $4}'
+    printf " record and points to "
+    dig web-02."$1" +short
+elif [ "$#" == 2 ]
+then
+    printf "The subdomain %s is a " "$2"
+    dig +nocmd "$2.$1" +noall +answer | awk '{printf $4}'
+    printf " record and points to "
+    dig "$2.$1" +short
 fi

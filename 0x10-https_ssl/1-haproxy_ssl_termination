@@ -47,8 +47,8 @@ frontend www-http
 
 backend www-backend
    redirect scheme https if !{ ssl_fc }
-   server www-1 34.73.138.186:80 check
-   server www-2 44.200.66.41:80 check
+   server www-1 35.237.65.20:80 check
+   server www-2 35.175.191.14:80 check
 
 backend letsencrypt-backend
     server letsencrypt 127.0.0.1:8888
